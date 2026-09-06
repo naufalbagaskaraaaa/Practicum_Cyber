@@ -1,0 +1,50 @@
+------------------------------------------------------------
+# 1. Akun dengan UID 0 (seharusnya hanya root)
+------------------------------------------------------------
+User dengan UID 0:
+root
+tidak menemukan risiko.
+------------------------------------------------------------
+# 2. File SUID / SGID di /usr/bin /bin /sbin
+------------------------------------------------------------
+mencari pada direktori /usr/bin ...
+ file ditemukan: /usr/bin/ssh-agent
+ file ditemukan: /usr/bin/su
+ file ditemukan: /usr/bin/crontab
+ file ditemukan: /usr/bin/chage
+ file ditemukan: /usr/bin/expiry
+ file ditemukan: /usr/bin/plocate
+ file ditemukan: /usr/bin/sudo
+ file ditemukan: /usr/bin/mount
+ file ditemukan: /usr/bin/umount
+ file ditemukan: /usr/bin/chsh
+ file ditemukan: /usr/bin/passwd
+ file ditemukan: /usr/bin/gpasswd
+ file ditemukan: /usr/bin/chfn
+mencari pada direktori /bin ...
+tidak ditemukan file SUID/SGID.
+mencari pada direktori /sbin ...
+tidak ditemukan file SUID/SGID.
+------------------------------------------------------------
+# 3. File world-writable di direktori sistem
+------------------------------------------------------------
+memindai folder /etc /usr /bin /sbin
+tidak ditemukan file world-writable.
+------------------------------------------------------------
+# 4. Entri cron, tandai yang menyebut /tmp atau /dev/shm
+------------------------------------------------------------
+cek crontab user aktif
+tidak mengadung /tmp dan atau /dev/shm
+cek direktori cron sistem
+tidak ada entri cron sistem berisiko.
+------------------------------------------------------------
+# 5. Konfigurasi SSH
+------------------------------------------------------------
+memeriksa /etc/ssh/sshd_config ...
+konfigurasi menggunakan nilai bawaan (default).
+------------------------------------------------------------
+# Hasil audit menunjukkan bahwa sistem saat ini dalam keadaan aman dan bebas dari risiko aktif. Seluruh area pemeriksaan—mulai dari penggunaan UID 0 yang khusus untuk akun root, ketiadaan berkas SUID/SGID dan world-writable yang berisiko, jadwal cron yang bersih, hingga konfigurasi SSH—berada dalam kondisi aman
+------------------------------------------------------------
+Dijalankan oleh : naufalBagaskara
+Host / tanggal  : LAPTOP-3MLKIL0H / Sun Sep  6 08:48:17 PM WIB 2026
+Total temuan berisiko: 0
