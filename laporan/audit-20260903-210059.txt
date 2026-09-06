@@ -1,0 +1,31 @@
+------------------------------------------------------------
+# 1. Akun dengan UID 0 (seharusnya hanya root)
+------------------------------------------------------------
+User dengan UID 0:
+root
+tidak menemukan risiko.
+------------------------------------------------------------
+# 2. File SUID / SGID di /usr/bin /bin /sbin
+------------------------------------------------------------
+tidak menemukan resiko
+}
+
+# --------------------------------------------------------------------------- 3
+cek_world_writable() {
+  judul 3. File world-writable di direktori sistem
+  # TODO: find /etc /usr /bin /sbin -xdev -type f -perm -0002 2>/dev/null
+  echo tidak menemukan resiko
+------------------------------------------------------------
+# 4. Entri cron (tandai yang menyebut /tmp atau /dev/shm)
+------------------------------------------------------------
+kel
+------------------------------------------------------------
+# 5. Konfigurasi SSH
+------------------------------------------------------------
+kelompok6boss
+------------------------------------------------------------
+# Ringkasan
+------------------------------------------------------------
+Dijalankan oleh : naufalBagaskara
+Host / tanggal  : LAPTOP-3MLKIL0H / Thu Sep  3 09:00:59 PM WIB 2026
+Total temuan berisiko: 0

@@ -1,0 +1,16 @@
+Lab Praktik Mg-03 — Sistem Operasi Linux & Command Line
+======================================================
+
+Folder: Mg03_Kelompok6_TI-C4_20260901
+Dibuat : Tue Sep  1 01:58:30 PM WIB 2026
+
+Langkah:
+  1. Buka SOAL.md — kerjakan Bagian 1 s.d. 6 berurutan.
+  2. Bagian 6: lengkapi audit-keamanan.sh, lalu:
+        chmod +x audit-keamanan.sh
+        ./audit-keamanan.sh | tee "laporan/audit-$(date +%Y%m%d-%H%M).txt"
+  3. Simpan semua screenshot ke folder laporan/
+  4. Cek kelengkapan:  bash cek-progress.sh
+  5. Ekspor folder ini jadi 1 PDF, kumpulkan bersama file audit-keamanan.sh.
+
+Aturan penamaan folder/berkas pengumpulan: Mg03_Kelompok<N>_<KelasTI-Cx>

@@ -1,0 +1,52 @@
+------------------------------------------------------------
+# 1. Akun dengan UID 0 (seharusnya hanya root)
+------------------------------------------------------------
+User dengan UID 0:
+root
+tidak menemukan risiko.
+------------------------------------------------------------
+# 2. File SUID / SGID di /usr/bin /bin /sbin
+------------------------------------------------------------
+
+>> direktori: /usr/bin
+file suid yang ditemukan:
+/usr/bin/su
+/usr/bin/sudo
+/usr/bin/mount
+/usr/bin/umount
+/usr/bin/chsh
+/usr/bin/passwd
+/usr/bin/gpasswd
+/usr/bin/chfn
+file sgid yang ditemukan:
+/usr/bin/ssh-agent
+/usr/bin/crontab
+/usr/bin/chage
+/usr/bin/expiry
+/usr/bin/plocate
+
+>> direktori: /bin
+file suid yang ditemukan:
+file sgid yang ditemukan:
+
+>> direktori: /sbin
+file suid yang ditemukan:
+file sgid yang ditemukan:
+------------------------------------------------------------
+# 3. File world-writable di direktori sistem
+------------------------------------------------------------
+tidak menemukan resiko
+------------------------------------------------------------
+# 4. Entri cron, tandai yang menyebut /tmp atau /dev/shm
+------------------------------------------------------------
+kel
+------------------------------------------------------------
+# 5. Konfigurasi SSH
+------------------------------------------------------------
+kelompok6boss
+------------------------------------------------------------
+# Ringkasan
+------------------------------------------------------------
+Dijalankan oleh : naufalBagaskara
+Host / tanggal  : LAPTOP-3MLKIL0H / Thu Sep  3 09:06:43 PM WIB 2026
+Total temuan berisiko: 0

@@ -1,0 +1,132 @@
+------------------------------------------------------------
+# 1. Akun dengan UID 0 (seharusnya hanya root)
+------------------------------------------------------------
+User dengan UID 0:
+root
+tidak menemukan risiko.
+------------------------------------------------------------
+# 2. File SUID / SGID di /usr/bin /bin /sbin
+------------------------------------------------------------
+
+>> direktori: /usr/bin
+file suid yang ditemukan:
+/usr/bin/su
+/usr/bin/sudo
+/usr/bin/mount
+/usr/bin/umount
+/usr/bin/chsh
+/usr/bin/passwd
+/usr/bin/gpasswd
+/usr/bin/chfn
+file sgid yang ditemukan:
+/usr/bin/ssh-agent
+/usr/bin/crontab
+/usr/bin/chage
+/usr/bin/expiry
+/usr/bin/plocate
+
+>> direktori: /bin
+file suid yang ditemukan:
+file sgid yang ditemukan:
+
+>> direktori: /sbin
+file suid yang ditemukan:
+file sgid yang ditemukan:
+------------------------------------------------------------
+# 3. File world-writable di direktori sistem
+------------------------------------------------------------
+tidak menemukan risiko.
+------------------------------------------------------------
+# 4. Entri cron, tandai yang menyebut /tmp atau /dev/shm
+------------------------------------------------------------
+crontab user:
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+# * * * * * date >> ~/latihan-cron.log
+
+/etc/crontab:
+# /etc/crontab: system-wide crontab
+# Unlike any other crontab you don't have to run the `crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name command to be executed
+17 *	* * *	root	cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.daily; }
+47 6	* * 7	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.weekly; }
+52 6	1 * *	root	test -x /usr/sbin/anacron || { cd / && run-parts --report /etc/cron.monthly; }
+#
+
+/etc/cron.d:
+30 3 * * 0 root test -e /run/systemd/system || SERVICE_MODE=1 /usr/libexec/e2fsprogs/e2scrub_all_cron
+10 3 * * * root test -e /run/systemd/system || SERVICE_MODE=1 /sbin/e2scrub_all -A -r
+#
+# Start john everyday at the same to try to crack the passwords. The
+# second line will then later stop the process so that it doesn't
+# consume system resources that are needed otherwise. You are
+# encouraged to change the times.
+#
+# Also notice that John is 'nice'd, if you don't like this (you 
+# believe that your system can run fine with john doing its work)
+# just remove the 'nice' call
+#
+# JOHN_OPTIONS = foo bar (man 5 crontab)
+#
+#00 1	* * *	root	[ -x /usr/share/john/cronjob ] && nice /usr/share/john/cronjob start
+#00 7	* * *	root	[ -x /usr/share/john/cronjob ] && /usr/share/john/cronjob stop
+# The first element of the path is a directory where the debian-sa1
+# script is located
+PATH=/usr/libexec/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Activity reports every 10 minutes everyday
+5-55/10 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1
+
+# Additional run at 23:59 to rotate the statistics file
+59 23 * * * root command -v debian-sa1 > /dev/null && debian-sa1 60 2
+
+pengecekan /tmp atau /dev/shm:
+tidak ditemukan /tmp atau /dev/shm
+------------------------------------------------------------
+# 5. Konfigurasi SSH
+------------------------------------------------------------
+konfigurasi SSH:
+PermitRootLogin: tidak diset
+PasswordAuthentication: tidak diset
+------------------------------------------------------------
+# Ringkasan
+------------------------------------------------------------
+Dijalankan oleh : naufalBagaskara
+Host / tanggal  : LAPTOP-3MLKIL0H / Thu Sep  3 09:31:22 PM WIB 2026
+Total temuan berisiko: 0
